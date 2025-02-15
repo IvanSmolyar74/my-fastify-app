@@ -2,8 +2,8 @@
     "version": 2,
     "rewrites": [
         {
-            "src": "./app.js",
-            "dest": "/"
+            "source": "/(.*)",
+            "destination": "./app.js"
         }
     ]
 }
