@@ -9,7 +9,7 @@ app.register(setRoutes);
 export const mongo = new MongoService("mongodb+srv://ivansmolar09001:BujL5AxCU5Zod1uo@cluster0.bqzwf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 
 const start = () => {
-  app.listen({ port: Number(process.env.PORT) || 3000 }, (err, address) => {
+  app.listen({ port: 10000 }, (err, address) => {
     if (err) {
       app.log.error(err);
       process.exit(1);
