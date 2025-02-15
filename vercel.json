@@ -2,7 +2,7 @@
     "version": 2,
     "routes": [
         {
-            "src": "./dist/app.js",
+            "src": "./app.js",
             "dest": "/"
         }
     ]
