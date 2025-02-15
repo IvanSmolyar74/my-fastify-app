@@ -5,6 +5,7 @@ class MongoService {
   private db: Db | null = null;
 
   constructor(uri: string) {
+    console.log("uri", uri);
     this.client = new MongoClient(uri);
   }
 
@@ -38,5 +39,5 @@ class MongoService {
 }
 
 export const mongo = new MongoService(
-  "mongodb+srv://ivansmolar09001:BujL5AxCU5Zod1uo@cluster0.bqzwf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.bqzwf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
 );
