@@ -7,7 +7,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./build",
+    "outDir": "./public",
     "rootDir": "./src",
     "typeRoots": [
       "./node_modules/@types",
