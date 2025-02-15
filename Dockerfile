@@ -1,7 +1,9 @@
-FROM node:22.13.1
+FROM node:slim
 WORKDIR /app
-COPY package*.json /app
-RUN npm install && npm run build
-COPY dist .
+COPY package.json /app
+COPY package-lock.json /app
+RUN npm ci
+COPY . /app
+RUN npm run build
 EXPOSE 3000
-CMD ["node", "app.js"]
+CMD ["node", "./dist/app.js"]
