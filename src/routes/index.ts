@@ -3,13 +3,7 @@ import { mongo } from "../services/mongo.service";
 
 export async function setRoutes(fastify: FastifyInstance) {
   fastify.get("/", async (request, reply) => {
-    const res = await mongo.find(
-      "planets",
-      {},
-      {
-        sort: { orderFromSun: 1 },
-      }
-    );
+    const res = await mongo.find("Themes", {});
     reply.send({ message: res });
   });
   fastify.get<{

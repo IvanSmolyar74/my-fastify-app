@@ -11,7 +11,7 @@ class MongoService {
   async connect(): Promise<void> {
     if (!this.db) {
       await this.client.connect();
-      this.db = this.client.db("sample_guides");
+      this.db = this.client.db("FrontendQuiz");
     }
   }
 
