@@ -8,21 +8,15 @@ const app = fastify({ logger: true });
 app.register(setRoutes);
 const PORT = process.env.PORT || 3000;
 const start = () => {
-  app.listen({ port: +PORT, host: "0.0.0.0" }, (err, address) => {
+  app.listen({ port: +PORT, host: "0.0.0.0" }, async (err, address) => {
     try {
       if (err) {
         app.log.error(err);
         process.exit(1);
       } else {
         app.log.info(`Server listening at ${address}`);
-        mongo
-          .connect()
-          .then(() => {
-            console.log("Connected to MongoDB");
-          })
-          .catch((e) => {
-            console.log("Failed connect to MongoDB: ", e);
-          });
+        await mongo.connect();
+        console.log("Connected to MongoDB");
       }
     } catch (e) {
       console.log(e);
