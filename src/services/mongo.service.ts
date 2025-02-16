@@ -35,6 +35,4 @@ class MongoService {
   }
 }
 
-export const mongo = new MongoService(
-  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0.bqzwf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
-);
+export const mongo = new MongoService(process.env.MONGO_URI || "");
