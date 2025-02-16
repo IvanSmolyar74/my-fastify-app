@@ -8,7 +8,7 @@ const app = fastify({ logger: true });
 app.register(setRoutes);
 const PORT = process.env.PORT || 3000;
 const start = () => {
-  app.listen({ port: +PORT }, (err, address) => {
+  app.listen({ port: +PORT, host: "0.0.0.0" }, (err, address) => {
     try {
       if (err) {
         app.log.error(err);
