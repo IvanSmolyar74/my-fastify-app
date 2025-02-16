@@ -5,7 +5,6 @@ class MongoService {
   private db: Db | null = null;
 
   constructor(uri: string) {
-    console.log("uri", uri);
     this.client = new MongoClient(uri);
   }
 
@@ -34,8 +33,6 @@ class MongoService {
     const collection = this.db.collection(collectionName);
     return await collection.find(filter, options).toArray();
   }
-
-  // Additional methods for insert, update, delete can be added here
 }
 
 export const mongo = new MongoService(
