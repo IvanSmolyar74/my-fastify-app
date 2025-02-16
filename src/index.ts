@@ -7,22 +7,22 @@ const app = fastify({ logger: true });
 
 app.register(setRoutes);
 const PORT = process.env.PORT || 3000;
-const start = () => {
-  app.listen({ port: +PORT, host: "0.0.0.0" }, async (err, address) => {
-    try {
+const start = async () => {
+  try {
+    await mongo.connect();
+    app.log.info("Connected to MongoDB");
+    app.listen({ port: +PORT, host: "0.0.0.0" }, async (err, address) => {
       if (err) {
         app.log.error(err);
         process.exit(1);
       } else {
         app.log.info(`Server listening at ${address}`);
-        await mongo.connect();
-        console.log("Connected to MongoDB");
       }
-    } catch (e) {
-      console.log(e);
-      process.exit(1);
-    }
-  });
+    });
+  } catch (e) {
+    app.log.error("Failed to connect to MongoDB: ", e);
+    process.exit(1);
+  }
 };
 
 start();
