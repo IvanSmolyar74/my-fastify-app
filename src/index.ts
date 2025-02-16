@@ -15,7 +15,14 @@ const start = () => {
         process.exit(1);
       } else {
         app.log.info(`Server listening at ${address}`);
-        mongo.connect();
+        mongo
+          .connect()
+          .then(() => {
+            console.log("Connected to MongoDB");
+          })
+          .catch((e) => {
+            console.log("Failed connect to MongoDB: ", e);
+          });
       }
     } catch (e) {
       console.log(e);

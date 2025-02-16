@@ -4,7 +4,8 @@
   "main": "src/app.ts",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev src/index.ts"
+    "dev": "ts-node-dev src/index.ts",
+    "start": "node ./public/index.js"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
