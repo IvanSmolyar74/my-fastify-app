@@ -1,11 +1,16 @@
 import fastify from "fastify";
+import cors from "@fastify/cors";
 import "dotenv/config";
 import { setRoutes } from "./routes/index";
 import { mongo } from "./services/mongo.service";
 
 const app = fastify({ logger: true });
 
-app.register(setRoutes);
+app
+  .register(cors, {
+    origin: "*",
+  })
+  .register(setRoutes);
 const PORT = process.env.PORT || 3000;
 const start = async () => {
   try {
