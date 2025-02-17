@@ -33,6 +33,18 @@ class MongoService {
     const collection = this.db.collection(collectionName);
     return await collection.find(filter, options).toArray();
   }
+
+  async findOne(
+    collectionName: string,
+    filter: Filter<Document>,
+    options?: FindOptions
+  ): Promise<any> {
+    if (!this.db) {
+      throw new Error("Database not connected");
+    }
+    const collection = this.db.collection(collectionName);
+    return await collection.findOne(filter, options);
+  }
 }
 
 export const mongo = new MongoService(process.env.MONGO_URI || "");
