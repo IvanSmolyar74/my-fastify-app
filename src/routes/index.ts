@@ -7,9 +7,10 @@ export async function setRoutes(fastify: FastifyInstance) {
     reply.send(res);
   });
   fastify.get<{
-    Params: { type: string };
-  }>("/:type", async (request, reply) => {
-    const { type } = request.params;
-    reply.send({ type });
+    Params: { theme: string };
+  }>("/:theme", async (request, reply) => {
+    const { theme } = request.params;
+    const res = await mongo.find(theme, {});
+    reply.send(res);
   });
 }
