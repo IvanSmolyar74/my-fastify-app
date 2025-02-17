@@ -17,7 +17,7 @@ export async function setRoutes(fastify: FastifyInstance) {
     Body: { theme: string; id: string };
   }>("/answer", async (request, reply) => {
     const { theme, id } = request.body;
-    const res = await mongo.find(`${theme}Answer`, { questionId: id });
+    const res = await mongo.find(`${theme}Answers`, { questionId: id });
     reply.send(res);
   });
 }
